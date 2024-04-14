@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const collectionSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
     email: { type: String, required: true },
@@ -8,10 +8,10 @@ const collectionSchema = new mongoose.Schema({
     phone: { type: String, required: true },
     address: { type: String, required: true }
 });
-
-const CollectionName = "users";
-
+function getCollection(database = process.env.DB_NAME) {
+    const connection = mongoose.connection.useDb(database);
+    return connection.model('Users', userSchema)
+}
 module.exports = {
-    collectionSchema,
-    CollectionName
+    getCollection
 };
