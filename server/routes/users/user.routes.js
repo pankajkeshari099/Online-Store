@@ -7,6 +7,7 @@ const checkUserAuth = require('../../middleware/auth-middleware.js')
 routes.post('/changePassword',checkUserAuth, userController.changePassword)
 routes.post('/registration', userController.registration);
 routes.get('/getUser', userController.getUser);
+routes.get('/getUserProfile/:id', userController.getUserProfile);
 routes.post('/login', userController.login);
 
 module.exports = routes;

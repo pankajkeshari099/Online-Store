@@ -19,13 +19,26 @@ const addProduct = async (req, res) => {
         return res.status(500).json({ status: false, message: "Internal server error" });
     }
 }
-const getProduct = async (req, res) => {
-    console.log("get");
+const getProducts = async (req, res) => {
     try {
         const result = await productDao.find();
         return res.status(200).json({ status: true, products: result });
     } catch (error) {
         console.error('Error fetching products:', error);
+        return res.status(500).json({ status: false, message: "Internal server error" });
+    }
+}
+const getProduct = async (req, res) => {
+    try {
+        const id = req.params.id;
+        const result = await productDao.findById(id);
+        if(!result)
+        {
+            return res.status(404).json({ status: false, message: "Product not found!" });
+        }
+        return res.status(200).json({ status: true, product: result });
+    } catch (error) {
+        console.error('Error fetching product:', error);
         return res.status(500).json({ status: false, message: "Internal server error" });
     }
 }
@@ -37,6 +50,7 @@ const updateProduct = async (req, res) => {
 }
 module.exports = {
     addProduct,
+    getProducts,
     getProduct,
     deleteProduct,
     updateProduct

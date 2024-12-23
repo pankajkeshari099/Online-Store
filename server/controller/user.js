@@ -16,7 +16,7 @@ const registration = async (req, res) => {
         const hashPassowrd = await bcrypt.hash(userData.password, saltRounds);
         userData.password = hashPassowrd;
         const user = await userDao.save(userData);
-        res.status(201).json({ user: user, message: "Registration successful"});
+        res.status(201).json({ user: user, message: "Registration successful" });
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Internal server error' });
@@ -25,20 +25,19 @@ const registration = async (req, res) => {
 
 const login = async (req, res) => {
     try {
-        let {email, password} = req.body;
+        let { email, password } = req.body;
         const user = await userDao.findOne(email);
-        if(!user)
-        {
+        if (!user) {
             return res.status(404).json({ message: "Email does not exist!" });
         }
-                
+
         const match = await bcrypt.compare(password, user.password);
-        if(!match) {
-            return res.status(401).json({message: "Invalid email or password!"})
+        if (!match) {
+            return res.status(401).json({ message: "Invalid email or password!" })
         }
         //Generate JWT token
         const token = jwt.sign({ userId: user._id }, process.env.SECRET_KEY, { expiresIn: '30m', });
-        res.status(200).json({message: "Login successful", token: token, userId: user._id});
+        res.status(200).json({ message: "Login successful", token: token, userId: user._id });
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Internal server error' });
@@ -48,19 +47,31 @@ const login = async (req, res) => {
 const getUser = async (req, res) => {
     try {
         const user = await userDao.find();
-        res.status(200).json({user:user})
+        res.status(200).json({ user: user })
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+}
+const getUserProfile = async (req, res) => {
+    try {
+        const id = req.params.id;
+        const result = await userDao.findById(id);
+        res.status(200).json({ status: true, user: result });
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Internal server error' });
     }
 }
 
-const changePassword = async(req, res) => {
+
+const changePassword = async (req, res) => {
     console.log("This is change password");
 }
 module.exports = {
     registration,
     login,
     getUser,
-    changePassword
+    getUserProfile,
+    changePassword,
 }

@@ -8,6 +8,9 @@ module.exports.save = async(userData) =>{
 module.exports.find = async () =>{
     return UserModel.find();
 }
+module.exports.findById = async (id) =>{
+    return UserModel.findById({_id: id});
+}
 module.exports.findOne = async(email)=>{
     console.log("email in dao", email);
     return UserModel.findOne({email: email})
