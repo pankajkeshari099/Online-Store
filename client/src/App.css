@@ -1,0 +1,369 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.main_profile {
+  background-color: #dfe6e9;
+  margin-top: 20px;
+  height: 450px;
+  border-radius: 10px;
+}
+
+.cancel_icon {
+  font-size: 1.5rem;
+}
+
+.cancel_icon:hover {
+  color: red;
+  cursor: pointer;
+}
+
+.hand {
+  cursor: pointer;
+}
+
+.viewMainImageBody {
+  width: 30rem;
+  height: 25rem;
+  border: 1px solid rgb(202, 195, 195);
+  border-radius: 10px;
+  margin-left: 5px;
+}
+
+.viewMainImage {
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  padding: 15px;
+}
+
+.viewImage {
+  width: 150px;
+  height: 100px;
+  background-repeat: none;
+}
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 88vh;
+}
+
+.loader {
+  display: inline-block;
+  font-size: 48px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  color: #490e31;
+  position: relative;
+}
+
+.loader::before {
+  content: '';
+  position: absolute;
+  left: 34px;
+  bottom: 8px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 5px solid #FFF;
+  border-bottom-color: #FF3D00;
+  box-sizing: border-box;
+  animation: rotation 0.6s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.hoverEffect:hover {
+  /* border: 2px solid rgb(189, 195, 199); */
+  box-shadow: 10px 10px 5px lightblue;
+}
+
+.plus {
+  width: 25px;
+  height: 25px;
+  border: 1px solid black;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  border-radius: 0px 10px 10px 0px;
+  ;
+}
+
+.minus {
+  width: 25px;
+  height: 25px;
+  border: 1px solid black;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  border-radius: 10px 0px 0px 10px;
+}
+
+.plus:hover {
+  background-color: #ffc107;
+}
+
+.minus:hover {
+  background-color: #ffc107;
+}
+
+.selectValue {
+  width: 50px;
+  height: 25px;
+  border: 1px solid black;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin: 0px 5px 0px 5px;
+}
+
+.productHover:hover {
+  color: #ffc107
+}
+
+.text-bold {
+  font-weight: bold;
+}
+.noDataFound {
+  background-image: url('./images/5928293_2953960.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  height: 80vh;
+  width: 100%;
+}
+.carousel{
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  height: 65vh;
+  width: 100%;
+}
+.user-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  color: black;
+  font-size: medium;
+}
+.card-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Number of lines to show */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.loginImage{
+  height: 60vh;
+  background-image: url('./images/freepik__expand__21738.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.loginMain, .signupMain{
+  box-shadow: 10px 10px 10px 10px rgb(39, 60, 117,0.2);
+  border-radius: 10px;
+}
+.loginOuter{
+  height: 100vh;
+  width: 100%;
+  background-color: #dfe6e9;
+}
+.signupImage
+{
+  height: 60vh;
+  background-image: url('./images/rb_1156.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.underline {
+  display: inline-block;
+  position: relative;
+  text-align: center;
+}
+
+.underline::after {
+  content: '';
+  position: absolute;
+  width: 25%;
+  height: 2px;
+  background-color: rgb(165, 197, 20);
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.text-center {
+  text-align: center;
+}
+.eyeIcon{
+  right: 10px;
+  top: 50%; 
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: gray;
+}
+.edithover:hover
+{
+  color: #ffc107;
+}
+.modalEditAddress{
+  background-color: rgba(211, 211, 211, 0.2);
+  width: 150vh;
+  height: 50vh;
+}
+/* Custom CSS for responsive design */
+.main_profile {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.cancel_icon {
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .main_profile {
+      padding: 1rem;
+  }
+
+  .main_profile .col {
+      margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .main_profile {
+      padding: 0.5rem;
+  }
+
+  .main_profile .col {
+      margin-bottom: 0.5rem;
+  }
+}
+.disabled { 
+  pointer-events: none; /* Prevents click events */ 
+  opacity: 0.5; /* Makes it look disabled */ 
+}
+.image-container img{
+  width: 100%;
+  object-fit: contain;
+  aspect-ratio: 5/4;
+}
+.image-container-view img{
+  width: 100%;
+  background: transparent;
+  object-fit: contain;
+  aspect-ratio: 3/2;
+}
+.yellow{
+  color: #ffc107;
+}
+.red{
+  color: red;
+}
+.fa-circle-xmark:hover{
+  color: red;
+  font-size: 25px;
+}
+.fa-circle-xmark{
+  font-size: 25px;
+}
+.fa-pen-to-square:hover{
+  color: #ffc107;
+}
+.fa-trash:hover{
+  color: #ff0000;
+}
+.marginClass{
+  margin-top: 3.6rem;
+}
+.hoverProductEffect:hover {
+  box-shadow: 5px 5px 5px 5px lightblue;
+}
+.image-container {
+  position: relative;
+  width: fit-content;
+}
+
+.icon-container {
+  position: absolute;
+  top: 10px;
+  right: 5px;
+  display: flex;
+  gap: 10px;
+}
+
+.icon-container i {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 5px;
+  border-radius: 5px;
+}
+.parent-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 110vh;
+}
+.imageUpload{
+  border: 1px solid lightgray;
+  border-radius: 7px;
+  height: 15vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.fa-cloud-arrow-up{
+  color: orange;
+  font-size: 50px;
+  margin-left: 5px;
+}

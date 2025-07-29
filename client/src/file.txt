@@ -1,0 +1,77 @@
+To verify a token on the client side in a React application and redirect to the login page if the token has expired, you can follow these steps:
+
+Decode the JWT Token: Extract the expiration time from the token.
+Check Token Expiry: Compare the token's expiration time with the current time.
+Redirect if Expired: If the token is expired, redirect the user to the login page.
+Here's a basic example using React and react-router-dom:
+
+Install Dependencies:
+
+npm install react-router-dom
+Create a Utility Function to Decode JWT:
+
+// utils/auth.js
+export const parseJwt = (token) => {
+  try {
+    return JSON.parse(atob(token.split('.')[1]));
+  } catch (e) {
+    return null;
+  }
+};
+Create an Auth Verification Component:
+
+// components/AuthVerify.js
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { parseJwt } from '../utils/auth';
+
+const AuthVerify = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const checkToken = () => {
+      const token = localStorage.getItem('token');
+      if (token) {
+        const decodedToken = parseJwt(token);
+        if (decodedToken.exp * 1000 < Date.now()) {
+          localStorage.removeItem('token');
+          navigate('/login');
+        }
+      } else {
+        navigate('/login');
+      }
+    };
+
+    checkToken();
+    const interval = setInterval(checkToken, 60000); // Check every minute
+
+    return () => clearInterval(interval);
+  }, [navigate]);
+
+  return null;
+};
+
+export default AuthVerify;
+Use the Auth Verification Component in Your App:
+
+// App.js
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import AuthVerify from './components/AuthVerify';
+import LoginPage from './pages/LoginPage';
+import HomePage from './pages/HomePage';
+
+const App = () => {
+  return (
+    <Router>
+      <AuthVerify />
+      <Routes>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/" element={<HomePage />} />
+      </Routes>
+    </Router>
+  );
+};
+
+export default App;
+In this example, the AuthVerify component checks the token's validity every minute and redirects to the login page if the token is expired123. You can adjust the interval and other logic as needed for your application.
