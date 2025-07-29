@@ -45,9 +45,11 @@ const UserList = () => {
                                             <td>{user.email}</td>
                                             <td>{user.phone}</td>
                                             <td>{user.address}</td>
-                                            <td>{user.status}</td>
-                                            <td><button className="btn btn-danger">Deactivate</button></td>
-                                            <td><button className="btn btn-primary">View Orders</button></td>
+                                            <td>{user.status === "true" ? "Active" : "Deactive"}</td>
+                                            {/* <td><button className="btn btn-danger">Deactivate</button></td> */}
+                                            <td><i className="fas fa-lock hand red" title="Deactivate"></i></td>
+                                            {/* <td><button className="btn btn-primary">View Orders</button></td> */}
+                                            <td><i class="fa-solid fa-eye hand blue" title="View Orders"></i></td>
                                         </tr>
                                     )
                                 })}

@@ -7,6 +7,7 @@ const userSchema = new mongoose.Schema({
     address: { type: String },
     phone: { type: String },
     role: { type: String, default: 2 },
+    status: { type: String, default: true}
 },
     {
         timestamps: true

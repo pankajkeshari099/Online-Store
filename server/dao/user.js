@@ -14,7 +14,7 @@ module.exports.findUserById = async (id) =>{
     return await UserModel.findById({_id: id}, 'username email phone address');
 }
 module.exports.find = async() => {
-    return UserModel.find({role: {$ne: 1}}, 'username email phone address');
+    return UserModel.find({role: {$ne: 1}}, 'username email phone address status');
 }
 module.exports.update = async(id, data) => {
     return UserModel.updateOne({_id: id}, {$set:data})
