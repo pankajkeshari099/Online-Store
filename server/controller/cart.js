@@ -53,7 +53,7 @@ const updateCartListQty = async (req, res) => {
         const result = await cartDao.updateCartListQty(userId, data)
         res.status(200).json({ status: true, product: result});
     } catch (error) {
-        console.log(error);
+        console.error(error);
         res.status(500).json({ status: false, message: "Internal Server Error" })
     }
 }

@@ -92,11 +92,24 @@ const updateProfile = async (req, res) => {
         res.status(500).json({ error: 'Internal server error' });
     }
 }
+const manageAccount = async (req, res) => {
+    try {
+        const { id, status} = req.body;
+        const updatedStatus = status === "true" ? "false" : "true";
+        const data = { status: updatedStatus };
+        const result = await userDao.update(id, data);
+        res.status(200).json({ status: true, message: "Account has been updated successfully", user: result })
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+}
 module.exports = {
     registration,
     login,
     getUser,
     getUsers,
     updateProfile,
-    getUserById
+    getUserById,
+    manageAccount
 }

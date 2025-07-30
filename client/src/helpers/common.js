@@ -31,13 +31,8 @@ const addToCart = async (product) => {
 
 const getProductBrands = async (productType) => {
     try {
-        // console.log("METHOD CALL",productType);
         const response = await axios.get(`/api/product/getProductBrands/${productType}`);
-        // console.log("response",response.data.brand);
         return response.data.brand;
-        if (response.status === 200) {
-            // setProducts(response.data.brands);
-        }
     } catch (error) {
         console.error(error)
     }

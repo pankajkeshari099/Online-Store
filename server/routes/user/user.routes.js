@@ -9,7 +9,8 @@ routes.post('/registration', userController.registration);
 routes.post('/login', userController.login);
 routes.get('/getUser', checkUserAuth, userController.getUser);
 routes.get('/getUserById/:id', checkUserAuth, userController.getUserById);
-routes.get('/getUsers', userController.getUsers);
+routes.get('/getUsers', checkUserAuth, userController.getUsers);
 routes.put('/updateProfile',checkUserAuth, userController.updateProfile);
+routes.put('/manageAccount',checkUserAuth, userController.manageAccount);
 
 module.exports = routes;

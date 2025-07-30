@@ -314,6 +314,10 @@
 .blue{
   color: #0d6efd;
 }
+
+.green {
+  color: green;
+}
 .fa-circle-xmark:hover{
   color: red;
   font-size: 25px;

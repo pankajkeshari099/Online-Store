@@ -26,7 +26,6 @@ const Product = () => {
 
     const getBrands = async () => {
         const value = await getProductBrands(type);
-        console.log("value",value);
         setBrandArray(value);
     };
 
